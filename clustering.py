@@ -21,7 +21,7 @@ def cluster_distances(distance_matrix, cluster1, cluster2):
     for i, node1 in enumerate(cluster1):
         for j, node2 in enumerate(cluster2):
             distances += distance_matrix[node1][node2]
-    return distances / (len(cluster1)+len(cluster2))
+    return distances / (len(cluster1)*len(cluster2))
 
 def neighbor_joining(distance_matrix):
     distances = copy.copy(distance_matrix)
