@@ -30,7 +30,7 @@ class FMIndex:
         print(frame)
         print('FM Index generated in %s seconds' % str(end-start))
 
-    def exact_search(self, query):
+    def search(self, query, mismatch_limit=0, indel_limit=0):
         # helper function
         def fm_search(whole_query, match_len, current_index):
             if match_len == len(whole_query):
@@ -116,11 +116,11 @@ def generate_matrix(seqs, distance_function=needleman_wunsch_score):
 if __name__ == '__main__':
     records = read_fasta('covid.fasta')
     sequence = list(records.values())[0]
-    query = 'YYHKNNKSWMESEFRVYSSANNCTFEYVSQPFLMDL'
+    query = 'YYHKNNKSWMESEFRVYSSANNCTFAYVSQPFLMDL'
     print(sequence)
     print(query)
     fm = FMIndex(sequence)
-    print(fm.exact_search(query))
+    print(fm.search(query, mismatch_limit=2))
     '''sequences = [
         'AATGCTCAAAA',
         'AATCCTCGAAA',
